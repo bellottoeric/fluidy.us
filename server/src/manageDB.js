@@ -7,7 +7,7 @@ function deleteOld() {
         try {
             if (fs.readdirSync('DB').length !== 0) {
                 for (var i of fs.readdirSync('DB')) {
-                    fs.unlinkSync("./DB/" + i)
+                    fs.rmdirSync("./DB/" + i, { recursive: true });
                 }
             }
             resolve()

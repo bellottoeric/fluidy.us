@@ -6,7 +6,9 @@
   "dependencies": {
     "axios": "^0.21.0",
     "express": "^4.17.1",
-    "popeyelib": "^1.0.2"
+    "popeyelib": "^1.0.2",
+    "rss-parser": "^3.9.0",
+    "sha256": "^0.2.0"
   },
   "devDependencies": {},
   "scripts": {
