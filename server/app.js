@@ -1,22 +1,20 @@
-var initialisation = require('./src/initialisation.js').initialisation()
-
+const express = require('express')
+const app = express()
+var initialisation = require('./src/initialisation.js')
+const allRoutes = require('./src/router');
 
 async function start(e) {
     return(new Promise(async (resolve, reject) => {
         try {
-            initialisation()
+            initialisation.initialisation()
         } catch(e) {
             console.log('Error', e)
         }
     }))
 }
 
-/*
-const express = require('express')
-const app = express()
+start()
 
-app.get('/', function (req, res) {
-    res.send('Hello World')
-})
+app.use('/', allRoutes);
 
-app.listen(3000)*/
+app.listen(3000)
