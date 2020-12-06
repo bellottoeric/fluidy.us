@@ -7,23 +7,25 @@ const https = require("https")
 const helmet = require("helmet")
 
 const app = express()
+const appSub = express()
 
 const initialisation = require('./src/initialisation.js')
 const allRoutes = require('./src/router')
-
-var privateKey = fs.readFileSync('fluidy.us.key', 'utf8');
-var certificate = fs.readFileSync('fluidy.us.crt', 'utf8');
 
 app.use(morgan("common"));
 app.use(helmet());
 app.use(cors());
 app.use(compression());
+appSub.use(morgan("common"));
+appSub.use(helmet());
+appSub.use(cors());
+appSub.use(compression());
 
 async function start(e) {
-    return(new Promise(async (resolve, reject) => {
+    return (new Promise(async (resolve, reject) => {
         try {
             initialisation.initialisation()
-        } catch(e) {
+        } catch (e) {
             console.log('Error', e)
         }
     }))
@@ -31,8 +33,10 @@ async function start(e) {
 
 start()
 
-app.use('/', allRoutes);
+app.use('/', allRoutes)
 
-var httpsServer = https.createServer({ key: privateKey, cert: certificate }, app);
+app.listen(8443)
 
-httpsServer.listen(8443);
+appSub.use('/', allRoutes)
+
+appSub.listen(8444)

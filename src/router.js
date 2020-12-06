@@ -8,7 +8,6 @@ router.use(function (req, res, next) {
 
 router.route('/').get(function (req, res) {
     res.send("home route")
-    console.log("home route")
 })
 
 router.route('/v1/informations').get(function (req, res) {
