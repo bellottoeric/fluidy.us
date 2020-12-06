@@ -1,21 +1,21 @@
-High Tech
-Web
-Sciences
-Gastronomie
-Santé et bien être
-Voyage
-Animaux
-Films et Séries
-Musique
-Jeux Vidéos
-Mode
-Arts
-Actualités
-Politique
-Coronavirus
-Culture
-Crypto Monnaies
-Mode de vie
-FootBall
-Hockey
-Basketball
+High Tech_https://news.google.com/rss/search?q=High Tech&ceid=FR:fr&gl=FR-AND-https://news.google.com/rss/search?q=Technologique&ceid=FR:fr&gl=FR
+Web_https://news.google.com/rss/search?q=Web&ceid=FR:fr&gl=FR
+Sciences_https://news.google.com/rss/search?q=Sciences&ceid=FR:fr&gl=FR
+Gastronomie_https://news.google.com/rss/search?q=Gastronomie&ceid=FR:fr&gl=FR
+Santé et bien être_https://news.google.com/rss/search?q=Sante et bien etre&ceid=FR:fr&gl=FR
+Voyage_https://news.google.com/rss/search?q=Voyage&ceid=FR:fr&gl=FR
+Animaux_https://news.google.com/rss/search?q=Animaux&ceid=FR:fr&gl=FR
+Films et Séries_https://news.google.com/rss/search?q=Films et Series&ceid=FR:fr&gl=FR
+Musique_https://news.google.com/rss/search?q=Musique&ceid=FR:fr&gl=FR
+Jeux Vidéos_https://news.google.com/rss/search?q=Jeux Videos&ceid=FR:fr&gl=FR
+Mode_https://news.google.com/rss/search?q=Mode&ceid=FR:fr&gl=FR
+Arts_https://news.google.com/rss/search?q=Arts&ceid=FR:fr&gl=FR
+Actualités_https://news.google.com/rss/search?q=Actualites&ceid=FR:fr&gl=FR
+Politique_https://news.google.com/rss/search?q=Politique&ceid=FR:fr&gl=FR
+Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=FR:fr&gl=FR
+Culture_https://news.google.com/rss/search?q=Culture&ceid=FR:fr&gl=FR
+Crypto Monnaies_https://news.google.com/rss/search?q=Crypto Monnaies&ceid=FR:fr&gl=FR
+Mode de vie_https://news.google.com/rss/search?q=Mode de vie&ceid=FR:fr&gl=FR
+FootBall_https://news.google.com/rss/search?q=FootBall&ceid=FR:fr&gl=FR
+Hockey_https://news.google.com/rss/search?q=Hockey&ceid=FR:fr&gl=FR
+Basketball_https://news.google.com/rss/search?q=Basketball&ceid=FR:fr&gl=FR
