@@ -1,8 +1,6 @@
-const { query } = require('express');
 var express = require('express');
 var router = express.Router();
 var all = require('./manageDB.js').all
-
 
 router.use(function (req, res, next) {
     next();
@@ -13,18 +11,11 @@ router.route('/').get(function (req, res) {
     console.log("home route")
 })
 
-
-
-
-
 router.route('/v1/informations').get(function (req, res) {
-    console.log("informations")
     res.status(200).json(all.categories)
 })
 
 router.route('/v1/getArticles/').get(function (req, res) {
-    console.log("informations")
-
     if (!req.query || !req.query.lang || !req.query.category) {
         res.status(400).json({"response":"Bad Request"})
     } else {
@@ -36,13 +27,7 @@ router.route('/v1/getArticles/').get(function (req, res) {
     }
 })
 
-
-
-
-
-
 router.route('*').all(function (req, res) {
-    console.log("lost")
     res.status(404).json({
         response: 'Error 404'
     })
