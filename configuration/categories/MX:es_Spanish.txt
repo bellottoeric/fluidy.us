@@ -1,0 +1,21 @@
+Alta tecnología_https://news.google.com/rss/search?q=Alta tecnologia&ceid=MX:es&gl=MX
+Web_https://news.google.com/rss/search?q=Web&ceid=MX:es&gl=MX
+Ciencias_https://news.google.com/rss/search?q=Ciencias&ceid=MX:es&gl=MX
+Gastronomía_https://news.google.com/rss/search?q=Gastronomia&ceid=MX:es&gl=MX
+Salud y Bienestar_https://news.google.com/rss/search?q=Salud y Bienestar&ceid=MX:es&gl=MX
+Viajar_https://news.google.com/rss/search?q=Viajar&ceid=MX:es&gl=MX
+Animales_https://news.google.com/rss/search?q=Animales&ceid=MX:es&gl=MX
+Películas y series_https://news.google.com/rss/search?q=Peliculas y series&ceid=MX:es&gl=MX
+Música_https://news.google.com/rss/search?q=Musica&ceid=MX:es&gl=MX
+Videojuegos_https://news.google.com/rss/search?q=Videojuegos&ceid=MX:es&gl=MX
+Moda_https://news.google.com/rss/search?q=Moda&ceid=MX:es&gl=MX
+Letras_https://news.google.com/rss/search?q=Letras&ceid=MX:es&gl=MX
+Noticias_https://news.google.com/rss/search?q=Noticias&ceid=MX:es&gl=MX
+Política_https://news.google.com/rss/search?q=Politica&ceid=MX:es&gl=MX
+Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=MX:es&gl=MX
+Cultura_https://news.google.com/rss/search?q=Cultura&ceid=MX:es&gl=MX
+CRIPTOMONEDAS_https://news.google.com/rss/search?q=CRIPTOMONEDAS&ceid=MX:es&gl=MX
+Estilo de vida_https://news.google.com/rss/search?q=Estilo de vida&ceid=MX:es&gl=MX
+Fútbol_https://news.google.com/rss/search?q=Futbol&ceid=MX:es&gl=MX
+Hockey_https://news.google.com/rss/search?q=Hockey&ceid=MX:es&gl=MX
+Baloncesto_https://news.google.com/rss/search?q=Baloncesto&ceid=MX:es&gl=MX

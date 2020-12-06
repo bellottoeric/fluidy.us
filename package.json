@@ -1,0 +1,28 @@
+{
+  "name": "fluidy.us",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "popeyelib": "^1.0.2",
+    "rss-parser": "^3.9.0",
+    "sha256": "^0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bellottoeric/fluidy.us.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bellottoeric/fluidy.us/issues"
+  },
+  "homepage": "https://github.com/bellottoeric/fluidy.us#readme"
+}

@@ -1,0 +1,6 @@
+FR:fr_French
+US:en_English
+IT:it_Italian
+MX:es_Spanish
+DE:de_German
+PT:pt_Portuguese
