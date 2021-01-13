@@ -10,7 +10,7 @@ router.route('/').get(function (req, res) {
     res.send("home route")
 })
 
-router.route('/v1/informations').get(function (req, res) {
+router.route('/v1/categories').get(function (req, res) {
     res.status(200).json(all.categories)
 })
 

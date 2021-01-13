@@ -1,28 +1,59 @@
 var fs = require('fs')
 var Parser = require('rss-parser');
 var parser = new Parser();
-var axios = require('axios').default; 
 var popeyelib = require('popeyelib')
 var wait = popeyelib.wait
 var sha256 = require('sha256');
-const { prototype } = require('stream');
+const urlMetadata = require('url-metadata')
+const {
+  extract 
+} = require('article-parser');
+
+async function getMetaData(link) {
+    return(new Promise(async (resolve, reject) => {
+        try {
+            extract(link).then((article) => {
+                if (article.image) {
+                    resolve(article.image)
+                } else {
+                    //console.log("No image")
+                    resolve("err")
+                }
+            }).catch((err) => {
+                //console.log(err)
+                resolve("err")
+            });
+        } catch(e) {
+            console.log('Error in function', arguments.callee.name, e)
+        }
+    }))
+}
 
 async function getArticles(lang, category, blackList, url) {
     return(new Promise(async (resolve, reject) => {
         try {
             for (var i of url.split('-AND-')) {
                 var feed = await parser.parseURL(i)
-
                 for (var item of feed.items) {
                     await wait(2)
                     if (blackList.indexOf(sha256(item.title) + ".txt") === -1) {
-                        fs.writeFileSync("./DB/" + lang + "/" + category + "/" + new Date(item.pubDate).getTime() + "-" + sha256(item.title) + ".txt", JSON.stringify(item))
+                        var meta = await getMetaData(item.link)
+                        if (meta !== "err") {
+                            item.img = meta
+                            delete item.guid
+                            delete item.content
+                            delete item.pubDate
+                            delete item.contentSnippet
+                            //console.log(item)
+                            fs.writeFileSync("./DB/" + lang + "/" + category + "/" + new Date(item.pubDate).getTime() + "-" + sha256(item.title) + ".txt", JSON.stringify(item))
+                        }
                     }
                 }
             }
             resolve()
         } catch(e) {
-            console.log('Error', e)
+            console.log('Error getarticles', e)
+            await getArticles(lang, category, blackList, url)
             resolve()
         }
     }))

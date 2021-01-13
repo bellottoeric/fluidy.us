@@ -6,7 +6,7 @@ async function initialisation() {
         try {
             dataInit()
             //await deleteOld()
-            //getRss()
+            getRss()
             
         } catch(e) {
             console.log('Error', e)

@@ -5,7 +5,7 @@ var wait = popeyelib.wait
 var all = {}
 
 async function dataInit() {
-    return(new Promise(async (resolve, reject) => {
+    return (new Promise(async (resolve, reject) => {
         try {
             //all.langNumber = fs.readdirSync("./DB/").length
             if (!all.categories)
@@ -21,7 +21,7 @@ async function dataInit() {
                         if (!all.articles[i])
                             all.articles[i] = []
                         if (!all.articles[i][j])
-                            all.articles[i][j] = "[" 
+                            all.articles[i][j] = "["
                         for (var n of fs.readdirSync('./DB/' + i + "/" + j)) {
                             var content = fs.readFileSync('./DB/' + i + "/" + j + "/" + n, "UTF-8")
                             all.articles[i][j] = all.articles[i][j] + content + ","
@@ -31,10 +31,15 @@ async function dataInit() {
                     }
                 }
             }
+            var newCategories = []
+            for (var i in all.categories) {
+                newCategories.push({ "lang": i, categories: all.categories[i] })
+            }
+            all.categories = newCategories
             //console.log(all)
             await wait(5000)
             all.u = "555"
-        } catch(e) {
+        } catch (e) {
             console.log('Error', e)
         }
     }))
@@ -55,6 +60,6 @@ async function deleteOld() {
     }))
 }
 
-exports.deleteOld = deleteOld 
-exports.dataInit = dataInit 
+exports.deleteOld = deleteOld
+exports.dataInit = dataInit
 exports.all = all 
