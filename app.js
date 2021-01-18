@@ -1,13 +1,10 @@
-const fs = require('fs')
 const express = require('express')
 const cors = require("cors")
 const morgan = require("morgan")
 const compression = require("compression")
-const https = require("https")
 const helmet = require("helmet")
 
 const app = express()
-const appSub = express()
 
 const initialisation = require('./src/initialisation.js')
 const allRoutes = require('./src/router')
@@ -16,10 +13,6 @@ app.use(morgan("common"));
 app.use(helmet());
 app.use(cors());
 app.use(compression());
-appSub.use(morgan("common"));
-appSub.use(helmet());
-appSub.use(cors());
-appSub.use(compression());
 
 async function start(e) {
     return (new Promise(async (resolve, reject) => {
@@ -34,9 +27,4 @@ async function start(e) {
 start()
 
 app.use('/', allRoutes)
-
-app.listen(8443)
-
-appSub.use('/', allRoutes)
-
-appSub.listen(8444)
+app.listen(3001)

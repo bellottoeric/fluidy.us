@@ -14,7 +14,8 @@ async function getMetaData(link) {
         try {
             extract(link).then((article) => {
                 if (article.image) {
-                    resolve(article.image)
+
+                    resolve(article)
                 } else {
                     //console.log("No image")
                     resolve("err")
@@ -34,18 +35,21 @@ async function getArticles(lang, category, blackList, url) {
         try {
             for (var i of url.split('-AND-')) {
                 var feed = await parser.parseURL(i)
+                var id = 1
                 for (var item of feed.items) {
                     await wait(2)
                     if (blackList.indexOf(sha256(item.title) + ".txt") === -1) {
-                        var meta = await getMetaData(item.link)
-                        if (meta !== "err") {
-                            item.img = meta
+                        var infoArticle = await getMetaData(item.link)
+                        if (infoArticle !== "err") {
+                            item.author = infoArticle.author
+                            item.source = infoArticle.source
+                            item.content = infoArticle.content
+                            item.img = infoArticle.image
+                            item.id = id
                             delete item.guid
-                            delete item.content
-                            delete item.pubDate
                             delete item.contentSnippet
-                            //console.log(item)
                             fs.writeFileSync("./DB/" + lang + "/" + category + "/" + new Date(item.pubDate).getTime() + "-" + sha256(item.title) + ".txt", JSON.stringify(item))
+                            id++
                         }
                     }
                 }
@@ -97,34 +101,3 @@ async function getRss() {
 }
 
 exports.getRss = getRss
-
-
-
-
-/*
-    // https://news.google.com/rss/search?q=deporte&ceid=MX:es&hl=es-419&gl=MX
-
-    //var url = ("https://news.google.com/rss/search?q=" + category + "&ceid=" + code + "&gl=" + code.split(':')[0])
-    //url = slugify(url)
-    //console.log(url)
-
-    function slugify(str) {
-        var map = {
-            '-': ' ',
-            '-': '_',
-            'a': 'á|à|ã|â|À|Á|Ã|Â',
-            'e': 'é|è|ê|É|È|Ê',
-            'i': 'í|ì|î|Í|Ì|Î',
-            'o': 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
-            'u': 'ú|ù|û|ü|Ú|Ù|Û|Ü',
-            'c': 'ç|Ç',
-            'n': 'ñ|Ñ'
-        };
-
-        for (var pattern in map) {
-            str = str.replace(new RegExp(map[pattern], 'g'), pattern);
-        };
-
-        return str;
-    };
-*/
