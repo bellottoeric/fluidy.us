@@ -2,9 +2,9 @@ var fs = require('fs')
 var Parser = require('rss-parser');
 var parser = new Parser();
 var popeyelib = require('popeyelib')
+const cheerio = require('cheerio');
 var wait = popeyelib.wait
 var sha256 = require('sha256');
-const urlMetadata = require('url-metadata')
 const {
   extract 
 } = require('article-parser');
@@ -14,7 +14,13 @@ async function getMetaData(link) {
         try {
             extract(link).then((article) => {
                 if (article.image) {
+                    const $ = cheerio.load(article.content)
 
+                    $('img').each(function (i, elem) {
+                        if (!elem.attribs.src) {
+                            $(this).replaceWith("");
+                        }
+                    });
                     resolve(article)
                 } else {
                     //console.log("No image")

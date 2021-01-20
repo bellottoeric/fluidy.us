@@ -1,4 +1,4 @@
-High Tech_https://news.google.com/rss/search?q=High Tech&ceid=IT:it&gl=IT
+Alta tecnologia_https://news.google.com/rss/search?q=High Tech&ceid=IT:it&gl=IT
 ragnatela_https://news.google.com/rss/search?q=ragnatela&ceid=IT:it&gl=IT
 Scienza_https://news.google.com/rss/search?q=Scienza&ceid=IT:it&gl=IT
 Gastronomia_https://news.google.com/rss/search?q=Gastronomia&ceid=IT:it&gl=IT
@@ -12,10 +12,10 @@ Moda_https://news.google.com/rss/search?q=Moda&ceid=IT:it&gl=IT
 Arts_https://news.google.com/rss/search?q=Arts&ceid=IT:it&gl=IT
 notizia_https://news.google.com/rss/search?q=notizia&ceid=IT:it&gl=IT
 Politica_https://news.google.com/rss/search?q=Politica&ceid=IT:it&gl=IT
-Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=IT:it&gl=IT
+IT Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=IT:it&gl=IT
 Cultura_https://news.google.com/rss/search?q=Cultura&ceid=IT:it&gl=IT
 Valute crittografiche_https://news.google.com/rss/search?q=Valute crittografiche&ceid=IT:it&gl=IT
 Stile di vita_https://news.google.com/rss/search?q=Stile di vita&ceid=IT:it&gl=IT
 Calcio_https://news.google.com/rss/search?q=Calcio&ceid=IT:it&gl=IT
-Hockey_https://news.google.com/rss/search?q=Hockey&ceid=IT:it&gl=IT
+Hockey su ghiaccio_https://news.google.com/rss/search?q=Hockey&ceid=IT:it&gl=IT
 Pallacanestro_https://news.google.com/rss/search?q=Pallacanestro&ceid=IT:it&gl=IT

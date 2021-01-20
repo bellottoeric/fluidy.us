@@ -1,6 +1,7 @@
 
-http://localhost:3001/v1/categories
-http://localhost:3001/v1/articles?lang=French&category=Web
+https://api.fluidy.news/v1/categories
+https://api.fluidy.news/v1/articles?lang=French&category=Web
+https://api.fluidy.news/v1/article?lang=French&category=Web&id=2
 
 https://news.google.com/rss/search?q=deporte&ceid=MX:es&hl=es-419&gl=MX
 

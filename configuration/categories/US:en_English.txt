@@ -9,13 +9,13 @@ Movies and Series_https://news.google.com/rss/search?q=Movies and Series&ceid=US
 Music_https://news.google.com/rss/search?q=Music&ceid=US:en&gl=US
 Video games_https://news.google.com/rss/search?q=Video games&ceid=US:en&gl=US
 Fashion_https://news.google.com/rss/search?q=Fashion&ceid=US:en&gl=US
-Arts_https://news.google.com/rss/search?q=Arts&ceid=US:en&gl=US
+The Art_https://news.google.com/rss/search?q=Arts&ceid=US:en&gl=US
 News_https://news.google.com/rss/search?q=News&ceid=US:en&gl=US
 Politics_https://news.google.com/rss/search?q=Politics&ceid=US:en&gl=US
-Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=US:en&gl=US
-Culture_https://news.google.com/rss/search?q=Culture&ceid=US:en&gl=US
+EN Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=US:en&gl=US
+The Culture_https://news.google.com/rss/search?q=Culture&ceid=US:en&gl=US
 Crypto Currencies_https://news.google.com/rss/search?q=Crypto Currencies&ceid=US:en&gl=US
 Lifestyle_https://news.google.com/rss/search?q=Lifestyle&ceid=US:en&gl=US
 Soccer_https://news.google.com/rss/search?q=Soccer&ceid=US:en&gl=US
 Hockey_https://news.google.com/rss/search?q=Hockey&ceid=US:en&gl=US
-Basketball_https://news.google.com/rss/search?q=Basketball&ceid=US:en&gl=US
+Basketball NBA_https://news.google.com/rss/search?q=Basketball&ceid=US:en&gl=US
