@@ -16,10 +16,10 @@ router.route('/v1/categories').get(function (req, res) {
 
 router.route('/v1/articles').get(function (req, res) {
     if (!req.query || !req.query.lang || !req.query.category) {
-        res.status(400).json({"response":"Bad Request"})
+        res.status(400).json({ "response": "Bad Request" })
     } else {
-        if (!all.articles || !all.articles[req.query.lang] || !all.articles[req.query.lang][req.query.category] ) {
-            res.status(400).json({"response": "Bad Request"})
+        if (!all.articles || !all.articles[req.query.lang] || !all.articles[req.query.lang][req.query.category]) {
+            res.status(400).json({ "response": "Bad Request" })
         } else {
             var content = JSON.parse(all.articles[req.query.lang][req.query.category])
             var resContent = []
@@ -40,7 +40,6 @@ router.route('/v1/article').get(function (req, res) {
             res.status(400).json({ "response": "Bad Request" })
         } else {
             var content = JSON.parse(all.articles[req.query.lang][req.query.category])
-            var resContent = []
             for (var i of content) {
                 if (i.id === Number(req.query.id)) {
                     res.status(200).json(i)

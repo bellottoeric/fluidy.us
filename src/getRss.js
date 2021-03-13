@@ -1,21 +1,20 @@
-var fs = require('fs')
-var Parser = require('rss-parser');
-var parser = new Parser();
-var popeyelib = require('popeyelib')
+const fs = require('fs')
+const Parser = require('rss-parser');
+const parser = new Parser();
+const popeyelib = require('popeyelib')
 const cheerio = require('cheerio');
-var wait = popeyelib.wait
-var sha256 = require('sha256');
-const {
-  extract 
-} = require('article-parser');
+const wait = popeyelib.wait
+const sha256 = require('sha256');
+const { extract } = require('article-parser');
 
 async function getMetaData(link) {
-    return(new Promise(async (resolve, reject) => {
+    return (new Promise(async (resolve, reject) => {
         try {
+            console.log("DATA INIT getRss.js", link)
+            await wait(1000)
             extract(link).then((article) => {
                 if (article.image) {
                     const $ = cheerio.load(article.content)
-
                     $('img').each(function (i, elem) {
                         if (!elem.attribs.src) {
                             $(this).replaceWith("");
@@ -30,14 +29,14 @@ async function getMetaData(link) {
                 //console.log(err)
                 resolve("err")
             });
-        } catch(e) {
+        } catch (e) {
             console.log('Error in function', arguments.callee.name, e)
         }
     }))
 }
 
 async function getArticles(lang, category, blackList, url) {
-    return(new Promise(async (resolve, reject) => {
+    return (new Promise(async (resolve, reject) => {
         try {
             for (var i of url.split('-AND-')) {
                 var feed = await parser.parseURL(i)
@@ -61,7 +60,7 @@ async function getArticles(lang, category, blackList, url) {
                 }
             }
             resolve()
-        } catch(e) {
+        } catch (e) {
             console.log('Error getarticles', e)
             await getArticles(lang, category, blackList, url)
             resolve()
@@ -70,7 +69,7 @@ async function getArticles(lang, category, blackList, url) {
 }
 
 async function getOldArticles(lang, j) {
-    return(new Promise(async (resolve, reject) => {
+    return (new Promise(async (resolve, reject) => {
         try {
             if (!fs.existsSync("./DB/" + lang))
                 fs.mkdirSync("./DB/" + lang);
@@ -80,15 +79,15 @@ async function getOldArticles(lang, j) {
             for (var i of fs.readdirSync("./DB/" + lang + "/" + j)) {
                 blackList.push(i.split('-')[1])
             }
-            resolve(blackList)    
-        } catch(e) {
+            resolve(blackList)
+        } catch (e) {
             console.log('Error', e)
         }
     }))
 }
 
 async function getRss() {
-    return(new Promise(async (resolve, reject) => {
+    return (new Promise(async (resolve, reject) => {
         try {
             for (var i of fs.readFileSync('./configuration/langueList.txt', "UTF-8").split('\n')) {
                 for (var j of fs.readFileSync('./configuration/categories/' + i + ".txt", "UTF-8").split('\n')) {
@@ -100,7 +99,7 @@ async function getRss() {
             }
             await wait(100000)
             getRss()
-        } catch(e) {
+        } catch (e) {
             console.log('Error', e)
         }
     }))

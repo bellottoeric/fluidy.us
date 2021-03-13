@@ -1,13 +1,15 @@
-var fs = require('fs')
-var popeyelib = require('popeyelib')
-var wait = popeyelib.wait
+const fs = require('fs')
+const popeyelib = require('popeyelib')
+const wait = popeyelib.wait
 
 var all = {}
 
 async function dataInit() {
     return (new Promise(async (resolve, reject) => {
         try {
-            //all.langNumber = fs.readdirSync("./DB/").length
+            console.log("DATA INIT manageDB.js")
+            await wait(1000)
+            all.langNumber = fs.readdirSync("./DB/").length
             if (!all.categories)
                 all.categories = {}
             for (var i of fs.readdirSync("./DB")) {
@@ -36,9 +38,6 @@ async function dataInit() {
                 newCategories.push({ "lang": i, categories: all.categories[i] })
             }
             all.categories = newCategories
-            //console.log(all)
-            await wait(5000)
-            all.u = "555"
         } catch (e) {
             console.log('Error', e)
         }
@@ -48,6 +47,8 @@ async function dataInit() {
 async function deleteOld() {
     return (new Promise(async (resolve, reject) => {
         try {
+            console.log("DELET OLD manageDB.js")
+            await wait(10000)
             if (fs.readdirSync('DB').length !== 0) {
                 for (var i of fs.readdirSync('DB')) {
                     fs.rmdirSync("./DB/" + i, { recursive: true });

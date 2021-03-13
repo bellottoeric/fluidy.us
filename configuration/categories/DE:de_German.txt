@@ -2,17 +2,17 @@ Hightech_https://news.google.com/rss/search?q=Hightech&ceid=DE:de&gl=DE
 Netz_https://news.google.com/rss/search?q=Netz&ceid=DE:de&gl=DE
 Wissenschaft_https://news.google.com/rss/search?q=Wissenschaft&ceid=DE:de&gl=DE
 Gastronomie_https://news.google.com/rss/search?q=Gastronomie&ceid=DE:de&gl=DE
-Gesundheit und Wohlbefinden_https://news.google.com/rss/search?q=Gesundheit und Wohlbefinden&ceid=DE:de&gl=DE
+Gesundheit-und-Wohlbefinden_https://news.google.com/rss/search?q=Gesundheit und Wohlbefinden&ceid=DE:de&gl=DE
 Reise_https://news.google.com/rss/search?q=Reise&ceid=DE:de&gl=DE
 Tiere_https://news.google.com/rss/search?q=Tiere&ceid=DE:de&gl=DE
-Filme und Serien_https://news.google.com/rss/search?q=Filme und Serien&ceid=DE:de&gl=DE
+Filme-und-Serien_https://news.google.com/rss/search?q=Filme und Serien&ceid=DE:de&gl=DE
 Musik_https://news.google.com/rss/search?q=Musik&ceid=DE:de&gl=DE
 Videospiele_https://news.google.com/rss/search?q=Videospiele&ceid=DE:de&gl=DE
-Die Mode_https://news.google.com/rss/search?q=Mode&ceid=DE:de&gl=DE
+Die-Mode_https://news.google.com/rss/search?q=Mode&ceid=DE:de&gl=DE
 Kunst_https://news.google.com/rss/search?q=Kunst&ceid=DE:de&gl=DE
 Nachrichten_https://news.google.com/rss/search?q=Nachrichten&ceid=DE:de&gl=DE
 Politik_https://news.google.com/rss/search?q=Politik&ceid=DE:de&gl=DE
-DE Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=DE:de&gl=DE
+DE-Coronavirus_https://news.google.com/rss/search?q=Coronavirus&ceid=DE:de&gl=DE
 Kultur_https://news.google.com/rss/search?q=Kultur&ceid=DE:de&gl=DE
 Kryptowährungen_https://news.google.com/rss/search?q=Kryptowährungen&ceid=DE:de&gl=DE
 Lebensstil_https://news.google.com/rss/search?q=Lebensstil&ceid=DE:de&gl=DE
