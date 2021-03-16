@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var all = require('./manageDB.js').all
+var fs = require('fs')
 
 router.use(function (req, res, next) {
     next();
@@ -21,7 +22,10 @@ router.route('/v1/articles').get(function (req, res) {
         if (!all.articles || !all.articles[req.query.lang] || !all.articles[req.query.lang][req.query.category]) {
             res.status(400).json({ "response": "Bad Request" })
         } else {
-            var content = JSON.parse(all.articles[req.query.lang][req.query.category])
+            var content = JSON.parse(all.articles[req.query.lang][req.query.category].replace(/,\]/g, "]"))
+            for (var i of content) {
+                console.log(i.id)
+            }
             var resContent = []
             for (var i of content) {
                 delete i.content
@@ -39,7 +43,7 @@ router.route('/v1/article').get(function (req, res) {
         if (!all.articles || !all.articles[req.query.lang] || !all.articles[req.query.lang][req.query.category]) {
             res.status(400).json({ "response": "Bad Request" })
         } else {
-            var content = JSON.parse(all.articles[req.query.lang][req.query.category])
+            var content = JSON.parse(all.articles[req.query.lang][req.query.category].replace(/,\]/g, "]"))
             for (var i of content) {
                 if (i.id === Number(req.query.id)) {
                     res.status(200).json(i)
@@ -58,7 +62,7 @@ router.route('/v1/getArticles/').get(function (req, res) {
         if (!all.articles || !all.articles[req.query.lang] || !all.articles[req.query.lang][req.query.category]) {
             res.status(400).json({ "response": "Bad Request" })
         } else {
-            var content = JSON.parse(all.articles[req.query.lang][req.query.category])
+            var content = JSON.parse(all.articles[req.query.lang][req.query.category].replace(/,\]/g, "]"))
             var resContent = []
             for (var i of content) {
                 delete i.content
@@ -67,6 +71,29 @@ router.route('/v1/getArticles/').get(function (req, res) {
             res.status(200).json(resContent)
         }
     }
+})
+
+router.route('/v1/getSound/:lang/:category/:nameFile/').get(function (req, res) {
+    var audioPath = './DBAUDIO/' + req.params.lang + "/" + req.params.category + "/" + req.params.nameFile
+    if (!fs.existsSync(audioPath)) {
+        res.status(400).json({ "response": "Bad Request" })
+    } else {
+        res.writeHead(200, {
+            'Content-Type': 'audio/mp3',
+            'Content-Length': fs.statSync(audioPath).size
+        });
+        var readStream = fs.createReadStream(audioPath);
+        readStream.pipe(res);
+    }
+})
+
+router.route('/v1/FluidyLogo.jpg').get(function (req, res) {
+    res.writeHead(200, {
+        'Content-Type': 'image/jpeg',
+        'Content-Length': fs.statSync("./FluidyLogo.png").size
+    });
+    var readStream = fs.createReadStream("./FluidyLogo.png");
+    readStream.pipe(res);
 })
 
 router.route('*').all(function (req, res) {

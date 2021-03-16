@@ -24,7 +24,7 @@ async function dataInit() {
                             all.articles[i] = []
                         if (!all.articles[i][j])
                             all.articles[i][j] = "["
-                        for (var n of fs.readdirSync('./DB/' + i + "/" + j)) {
+                        for (var n of fs.readdirSync('./DB/' + i + "/" + j).reverse()) {
                             var content = fs.readFileSync('./DB/' + i + "/" + j + "/" + n, "UTF-8")
                             all.articles[i][j] = all.articles[i][j] + content + ","
                         }
@@ -52,6 +52,11 @@ async function deleteOld() {
             if (fs.readdirSync('DB').length !== 0) {
                 for (var i of fs.readdirSync('DB')) {
                     fs.rmdirSync("./DB/" + i, { recursive: true });
+                }
+            }
+            if (fs.readdirSync('DBAUDIO').length !== 0) {
+                for (var i of fs.readdirSync('DBAUDIO')) {
+                    fs.unlinkSync("./DBAUDIO/" + i, { recursive: true });
                 }
             }
             resolve()
