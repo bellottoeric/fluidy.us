@@ -39,7 +39,7 @@ async function dataInit() {
             }
             all.categories = newCategories
         } catch (e) {
-            console.log('Error', e)
+            console.log('Error dataInit in ManageDB.js', e)
         }
     }))
 }
@@ -47,7 +47,7 @@ async function dataInit() {
 async function deleteOld() {
     return (new Promise(async (resolve, reject) => {
         try {
-            console.log("DELET OLD manageDB.js")
+            console.log("DELETE OLD manageDB.js")
             await wait(10000)
             if (fs.readdirSync('DB').length !== 0) {
                 for (var i of fs.readdirSync('DB')) {
@@ -61,7 +61,7 @@ async function deleteOld() {
             }
             resolve()
         } catch (e) {
-            console.log('Error', e)
+            console.log('Error deleteOld in manageDB.js', e)
         }
     }))
 }

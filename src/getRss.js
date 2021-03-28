@@ -1,35 +1,37 @@
 const fs = require('fs')
-const Parser = require('rss-parser');
-const parser = new Parser();
+const Parser = require('rss-parser')
+const parser = new Parser()
 const popeyelib = require('popeyelib')
-const cheerio = require('cheerio');
+const cheerio = require('cheerio')
 const wait = popeyelib.wait
-const sha256 = require('sha256');
-const { extract } = require('article-parser');
+const sha256 = require('sha256')
+const { extract } = require('article-parser')
 var processAudio = require('./processAudio.js').processAudio
 
 async function getMetaData(link) {
     return (new Promise(async (resolve, reject) => {
         try {
-            console.log("Get Metadata ", new URL(link).origin)
+            console.log("Get Metadata", new URL(link).origin)
             extract(link)
                 .then((article) => {
-                    if (article && article.image) {
+                    if (article) {
+                        if (!article.image)
+                            article.image = "https://api.fluidy.news/v1/FluidyLogo.jpg"
                         const $ = cheerio.load(article.content)
                         $('img').each(function (i, elem) {
                             if (!elem.attribs.src) {
-                                $(this).replaceWith("");
+                                $(this).replaceWith("")
                             }
-                        });
+                        })
                         resolve(article)
                     } else {
-                        console.log("No image or article")
+                        console.log("No article")
                         resolve("err")
                     }
                 }).catch((err) => {
-                    console.log("Error parsing", "err")
+                    console.log("Error parsing")
                     resolve("err")
-                });
+                })
         } catch (e) {
             console.log('Error in function', arguments.callee.name, e)
         }
@@ -47,7 +49,6 @@ async function getArticles(lang, category, blackList, url) {
                     let dateNow = JSON.stringify(new Date()).split('T')[0].replace('"', "")
                     let dateArticle = item.isoDate.split('T')[0]
                     if (dateNow === dateArticle) {
-                        //console.log("\nParse Article", item.link)
                         if (blackList.indexOf(sha256(item.title) + ".txt") === -1) {
                             var infoArticle = await getMetaData(item.link)
                             if (infoArticle !== "err") {
@@ -70,7 +71,7 @@ async function getArticles(lang, category, blackList, url) {
             }
             resolve()
         } catch (e) {
-            console.log('Error getarticles', e)
+            console.log('Error getArticles', e)
             await getArticles(lang, category, blackList, url)
             resolve()
         }
@@ -81,11 +82,11 @@ async function getOldArticles(lang, j) {
     return (new Promise(async (resolve, reject) => {
         try {
             if (!fs.existsSync("./DB/" + lang))
-                fs.mkdirSync("./DB/" + lang);
+                fs.mkdirSync("./DB/" + lang)
             if (!fs.existsSync("./DB/" + lang + "/" + j))
                 fs.mkdirSync("./DB/" + lang + "/" + j)
             if (!fs.existsSync("./DBAUDIO/" + lang))
-                fs.mkdirSync("./DBAUDIO/" + lang);
+                fs.mkdirSync("./DBAUDIO/" + lang)
             if (!fs.existsSync("./DBAUDIO/" + lang + "/" + j))
                 fs.mkdirSync("./DBAUDIO/" + lang + "/" + j)
             var blackList = []
@@ -102,9 +103,16 @@ async function getOldArticles(lang, j) {
 async function getRss() {
     return (new Promise(async (resolve, reject) => {
         try {
+            console.log("GET FLUX RSS getRss.js")
+            if (!fs.existsSync("./tempAudio")) {
+                fs.mkdirSync("./tempAudio")
+            }
+            if (!fs.existsSync("./DBAUDIO")) {
+                fs.mkdirSync("./DBAUDIO")
+            }
             if (fs.readdirSync('./tempAudio').length !== 0) {
                 for (var i of fs.readdirSync('./tempAudio')) {
-                    fs.unlinkSync("./tempAudio/" + i, { recursive: true });
+                    fs.unlinkSync("./tempAudio/" + i, { recursive: true })
                 }
             }
             for (var i of fs.readFileSync('./configuration/langueList.txt', "UTF-8").split('\n')) {

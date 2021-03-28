@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 var all = require('./manageDB.js').all
 var fs = require('fs')
 
 router.use(function (req, res, next) {
-    next();
-});
+    next()
+})
 
 router.route('/').get(function (req, res) {
     res.send("home route")
@@ -23,9 +23,6 @@ router.route('/v1/articles').get(function (req, res) {
             res.status(400).json({ "response": "Bad Request" })
         } else {
             var content = JSON.parse(all.articles[req.query.lang][req.query.category].replace(/,\]/g, "]"))
-            for (var i of content) {
-                console.log(i.id)
-            }
             var resContent = []
             for (var i of content) {
                 delete i.content
@@ -81,9 +78,9 @@ router.route('/v1/getSound/:lang/:category/:nameFile/').get(function (req, res) 
         res.writeHead(200, {
             'Content-Type': 'audio/mp3',
             'Content-Length': fs.statSync(audioPath).size
-        });
-        var readStream = fs.createReadStream(audioPath);
-        readStream.pipe(res);
+        })
+        var readStream = fs.createReadStream(audioPath)
+        readStream.pipe(res)
     }
 })
 
@@ -91,9 +88,9 @@ router.route('/v1/FluidyLogo.jpg').get(function (req, res) {
     res.writeHead(200, {
         'Content-Type': 'image/jpeg',
         'Content-Length': fs.statSync("./FluidyLogo.png").size
-    });
-    var readStream = fs.createReadStream("./FluidyLogo.png");
-    readStream.pipe(res);
+    })
+    var readStream = fs.createReadStream("./FluidyLogo.png")
+    readStream.pipe(res)
 })
 
 router.route('*').all(function (req, res) {

@@ -6,7 +6,9 @@ async function initialisation() {
         try {
             dataInit.dataInit()
             //await dataInit.deleteOld()
-            //getRss()
+            if (process.argv[3] === "rss") {
+                getRss()
+            }
 
         } catch (e) {
             console.log('Error', e)
