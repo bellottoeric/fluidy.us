@@ -1,5 +1,12 @@
 node_modules/
+
 DB
 DBAUDIO
-fluidy.us.key
-fluidy.us.crt
+
+twitterConfig.json
+nginxConfig.txt
+
+// /etc/letsencrypt/live/fluidy.news/fullchain.pem
+// /etc/letsencrypt/live/fluidy.news/privkey.pem
+fullchain.pem
+privkey.pem
