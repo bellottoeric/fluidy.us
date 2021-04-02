@@ -1,16 +1,16 @@
-var getRss = require('./getRss.js').getRss
-var processTwitter = require('./processTwitter.js').processTwitter
-
-var dataInit = require('./manageDB.js')
+const getRss = require('./getRss.js').getRss
+const processTwitter = require('./processTwitter.js').processTwitter
+const dataInit = require('./manageDB.js')
 
 async function initialisation() {
     return (new Promise(async (resolve, reject) => {
         try {
             dataInit.dataInit()
             //await dataInit.deleteOld()
-            if (process.argv[2] === "rss") {
+            if (process.argv[2] === "prod") {
+                console.log("PRODUCTION\n\n")
                 getRss()
-                //processTwitter()
+                processTwitter()
             }
 
         } catch (e) {

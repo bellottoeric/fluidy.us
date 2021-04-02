@@ -37,9 +37,13 @@ async function processAudio(content, sound, lang) {
                 ignoreImage: true,
             }), setupLangGtts[lang]);
             gtts.save(sound.replace('/v1/getSound/', "./DBAUDIO/"), function (err, result) {
-                if (err) { throw new Error(err) }
+                if (err) {
+                    console.log("Error", err)
+                    resolve()
+                } else {
+                    resolve()
+                }
             });
-            resolve()
         } catch (e) {
             console.log('Error in function', arguments.callee.name, e)
         }

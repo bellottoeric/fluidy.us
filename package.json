@@ -27,7 +27,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "node app.js",
-    "start": "node app.js rss"
+    "prod": "node app.js prod"
   },
   "repository": {
     "type": "git",

@@ -72,7 +72,7 @@ async function getBestTwitterPost(lang, country, querry) {
             item.id = idCounter
             var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
             item.sound = "/v1/getSound/" + country + "/" + querry + "/" + nameFile + ".mp3"
-            processAudio(twitterText, item.sound, country)
+            await processAudio(twitterText, item.sound, country)
             console.log("./DB/" + country + "/" + querry + "/" + nameFile + ".txt")
             fs.writeFileSync("./DB/" + country + "/" + querry + "/" + nameFile + ".txt", JSON.stringify(item))
             idCounter++

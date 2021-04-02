@@ -4,6 +4,7 @@ DB
 DBAUDIO
 
 twitterConfig.json
+redditConfig.json
 nginxConfig.txt
 
 // /etc/letsencrypt/live/fluidy.news/fullchain.pem

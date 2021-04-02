@@ -6,7 +6,7 @@ const cheerio = require('cheerio')
 const wait = popeyelib.wait
 const sha256 = require('sha256')
 const { extract } = require('article-parser')
-var processAudio = require('./processAudio.js').processAudio
+const processAudio = require('./processAudio.js').processAudio
 
 async function getMetaData(link) {
     return (new Promise(async (resolve, reject) => {
@@ -62,7 +62,7 @@ async function getArticles(lang, category, blackList, url) {
                                 item.img = infoArticle.image
                                 item.id = id
                                 item.sound = "/v1/getSound/" + lang + "/" + category + "/" + nameFile + ".mp3"
-                                processAudio(item.content, item.sound, lang)
+                                await processAudio(item.content, item.sound, lang)
                                 fs.writeFileSync("./DB/" + lang + "/" + category + "/" + nameFile + ".txt", JSON.stringify(item))
                                 id++
                             }
