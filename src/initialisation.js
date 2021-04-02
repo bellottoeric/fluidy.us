@@ -1,4 +1,6 @@
 var getRss = require('./getRss.js').getRss
+var processTwitter = require('./processTwitter.js').processTwitter
+
 var dataInit = require('./manageDB.js')
 
 async function initialisation() {
@@ -6,8 +8,9 @@ async function initialisation() {
         try {
             dataInit.dataInit()
             //await dataInit.deleteOld()
-            if (process.argv[3] === "rss") {
+            if (process.argv[2] === "rss") {
                 getRss()
+                //processTwitter()
             }
 
         } catch (e) {

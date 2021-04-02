@@ -48,8 +48,10 @@ async function getArticles(lang, category, blackList, url) {
                 for (var item of feed.items) {
                     let dateNow = JSON.stringify(new Date()).split('T')[0].replace('"', "")
                     let dateArticle = item.isoDate.split('T')[0]
+                    var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
+
                     if (dateNow === dateArticle) {
-                        if (blackList.indexOf(sha256(item.title) + ".txt") === -1) {
+                        if (blackList.indexOf(nameFile + ".txt") === -1) {
                             var infoArticle = await getMetaData(item.link)
                             if (infoArticle !== "err") {
                                 delete item.guid
@@ -59,9 +61,8 @@ async function getArticles(lang, category, blackList, url) {
                                 item.content = infoArticle.content
                                 item.img = infoArticle.image
                                 item.id = id
-                                var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
                                 item.sound = "/v1/getSound/" + lang + "/" + category + "/" + nameFile + ".mp3"
-                                processAudio(item, lang)
+                                processAudio(item.content, item.sound, lang)
                                 fs.writeFileSync("./DB/" + lang + "/" + category + "/" + nameFile + ".txt", JSON.stringify(item))
                                 id++
                             }
@@ -91,7 +92,7 @@ async function getOldArticles(lang, j) {
                 fs.mkdirSync("./DBAUDIO/" + lang + "/" + j)
             var blackList = []
             for (var i of fs.readdirSync("./DB/" + lang + "/" + j)) {
-                blackList.push(i.split('-')[1])
+                blackList.push(i)
             }
             resolve(blackList)
         } catch (e) {

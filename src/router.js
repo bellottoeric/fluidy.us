@@ -87,9 +87,18 @@ router.route('/v1/getSound/:lang/:category/:nameFile/').get(function (req, res) 
 router.route('/v1/FluidyLogo.jpg').get(function (req, res) {
     res.writeHead(200, {
         'Content-Type': 'image/jpeg',
-        'Content-Length': fs.statSync("./FluidyLogo.png").size
+        'Content-Length': fs.statSync("./FluidyLogo.jpg").size
     })
-    var readStream = fs.createReadStream("./FluidyLogo.png")
+    var readStream = fs.createReadStream("./FluidyLogo.jpg")
+    readStream.pipe(res)
+})
+
+router.route('/v1/FluidyTwitter.jpg').get(function (req, res) {
+    res.writeHead(200, {
+        'Content-Type': 'image/jpeg',
+        'Content-Length': fs.statSync("./FluidyTwitter.jpg").size
+    })
+    var readStream = fs.createReadStream("./FluidyTwitter.jpg")
     readStream.pipe(res)
 })
 
