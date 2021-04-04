@@ -69,7 +69,7 @@ async function getBestTwitterPost(lang, country, query) {
             item.isoDate = new Date(listPost[0].created_at)
             item.author = "@" + listPost[0].user.screen_name
             item.source = "Twitter"
-            item.img = "https://api.fluidy.new/v1/FluidyTwitter.jpg"
+            item.img = "https://api.fluidy.news/v1/FluidyTwitter.jpg"
             item.id = idCounter
             var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
             item.sound = "/v1/getSound/" + country + "/" + query + "/" + nameFile + ".mp3"

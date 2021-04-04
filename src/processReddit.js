@@ -72,7 +72,7 @@ async function getBestRedditPost(lang, country, query) {
             item.isoDate = new Date(listPost[0].created_utc)
             item.author = "u/" + listPost[0].author.name
             item.source = "Reddit"
-            item.img = "https://api.fluidy.new/v1/FluidyReddit.jpg"
+            item.img = "https://api.fluidy.news/v1/FluidyReddit.jpg"
             item.id = idCounter
             var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
             item.sound = "/v1/getSound/" + country + "/" + query + "/" + nameFile + ".mp3"
