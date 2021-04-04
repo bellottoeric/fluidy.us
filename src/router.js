@@ -102,6 +102,15 @@ router.route('/v1/FluidyTwitter.jpg').get(function (req, res) {
     readStream.pipe(res)
 })
 
+router.route('/v1/FluidyReddit.jpg').get(function (req, res) {
+    res.writeHead(200, {
+        'Content-Type': 'image/jpeg',
+        'Content-Length': fs.statSync("./FluidyReddit.jpg").size
+    })
+    var readStream = fs.createReadStream("./FluidyReddit.jpg")
+    readStream.pipe(res)
+})
+
 router.route('*').all(function (req, res) {
     res.status(404).json({
         response: 'Error 404'

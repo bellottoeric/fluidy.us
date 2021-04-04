@@ -30,12 +30,8 @@ const setupLangGtts = {
 async function processAudio(content, sound, lang) {
     return (new Promise(async (resolve, reject) => {
         try {
-            var gtts = new gTTS(htmlToText(content, {
-                wordwrap: 130,
-                hideLinkHrefIfSameAsText: true,
-                ignoreHref: true,
-                ignoreImage: true,
-            }), setupLangGtts[lang]);
+            content = content.replace(/,/g, " ").replace(/  /g, " ")
+            var gtts = new gTTS(content, setupLangGtts[lang])
             gtts.save(sound.replace('/v1/getSound/', "./DBAUDIO/"), function (err, result) {
                 if (err) {
                     console.log("Error", err)
@@ -43,7 +39,7 @@ async function processAudio(content, sound, lang) {
                 } else {
                     resolve()
                 }
-            });
+            })
         } catch (e) {
             console.log('Error in function', arguments.callee.name, e)
         }
