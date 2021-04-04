@@ -28,7 +28,7 @@ async function getBestRedditPost(lang, country, query) {
             var best = 0
             var bl = []
             var listPost = []
-            console.log(lang, country, query)
+            console.log("START REDDIT", lang, country, query)
             await reddit.search({ query: querySearch, sort: "new", limit: 50 }).then(post => {
                 data = post
             })
@@ -77,7 +77,6 @@ async function getBestRedditPost(lang, country, query) {
             var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
             item.sound = "/v1/getSound/" + country + "/" + query + "/" + nameFile + ".mp3"
             await processAudio(redditText, item.sound, country)
-
             fs.writeFileSync("./DB/" + country + "/" + query + "/" + nameFile + ".txt", JSON.stringify(item))
             idCounter++
             resolve()

@@ -10,8 +10,8 @@ async function initialisation() {
             //await dataInit.deleteOld()
             if (process.argv[2] === "prod") {
                 console.log("PRODUCTION\n\n")
-                //getRss()
-                //processTwitter()
+                getRss()
+                processTwitter()
                 processReddit()
             }
 

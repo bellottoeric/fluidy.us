@@ -21,7 +21,7 @@ const setupLang = {
 async function getBestTwitterPost(lang, country, query) {
     return (new Promise(async (resolve, reject) => {
         try {
-            console.log("Get Best Twitter Post", lang, query)
+            console.log("START TWITTER", lang, country, query)
             var querySearch = query.replace(/\-/g, " ")
             var big = 0
             var best = 0
@@ -61,7 +61,9 @@ async function getBestTwitterPost(lang, country, query) {
                 item.content += "<h3>" + res[0].full_text + "</h3>" + '<div class="tweet" tweetID="' + i.id_str + '"></div><br/>'
             }
             twitterText = twitterText.replace(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g, "")
-            item.title = listPost[0].text.split('.')[0]
+            if (!listPost[0].text)
+                listPost[0].text = "@" + listPost[0].user.screen_name + ": " listPost[0].full_text.substr(0, 50) + "..."
+            item.title = listPost[0].text.split('…')[0]
             item.link = "https://twitter.com/" + listPost[0].user.screen_name + "/status/" + listPost[0].id_str
             item.pubDate = listPost[0].created_at
             item.isoDate = new Date(listPost[0].created_at)

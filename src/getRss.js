@@ -11,7 +11,7 @@ const processAudio = require('./processAudio.js').processAudio
 async function getMetaData(link) {
     return (new Promise(async (resolve, reject) => {
         try {
-            console.log("Get Metadata", new URL(link).origin)
+            console.log("RSS Get Metadata", new URL(link).origin)
             extract(link)
                 .then((article) => {
                     if (article) {
@@ -42,14 +42,13 @@ async function getArticles(lang, category, blackList, url) {
     return (new Promise(async (resolve, reject) => {
         try {
             for (var i of url.split('-AND-')) {
-                console.log("\n\n\n\nParse", lang, category)
+                console.log("\n\n\n\nRSS Parse", lang, category)
                 var feed = await parser.parseURL(i)
                 var id = 1
                 for (var item of feed.items) {
                     let dateNow = JSON.stringify(new Date()).split('T')[0].replace('"', "")
                     let dateArticle = item.isoDate.split('T')[0]
                     var nameFile = new Date(item.pubDate).getTime() + "-" + sha256(item.title)
-
                     if (dateNow === dateArticle) {
                         if (blackList.indexOf(nameFile + ".txt") === -1) {
                             var infoArticle = await getMetaData(item.link)
